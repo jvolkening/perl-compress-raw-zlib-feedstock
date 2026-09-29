@@ -13,25 +13,24 @@ source:
 build:
   number: 1
   script:
-    - perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1
-    - make
-    - make test  # [build_platform == target_platform]
-    - make install VERBINST=1
+    - >-
+      perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1 MAKE=make
+      && make
+      && make test
+      && make install VERBINST=1
 
 requirements:
   build:
-    - {{ stdlib('c') }}            # [not win]
-    - {{ compiler('c') }}          # [not win]
-    - {{ stdlib("c") }}            # [not win]
-    - {{ stdlib('m2w64_c') }}      # [win]
-    - {{ compiler('m2w64_c') }}    # [win]
-    - {{ stdlib("m2w64_c") }}      # [win]
+    - {{ stdlib('c') }}
+    - {{ compiler('c') }}
     - make
   host:
     - perl
     - perl-extutils-makemaker
+    - zlib
   run:
     - perl
+    - zlib
 
 test:
   imports:
