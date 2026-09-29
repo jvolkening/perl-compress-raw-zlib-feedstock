@@ -11,8 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
   script:
     - perl Makefile.PL INSTALLDIRS=vendor NO_PERLLOCAL=1 NO_PACKLIST=1
     - make
@@ -44,8 +43,8 @@ about:
   license_family: OTHER
   summary: "Basic utilities for writing tests."
   license_file:
-    - {{ environ["PREFIX"] }}/man/man1/perlartistic.1
-    - {{ environ["PREFIX"] }}/man/man1/perlgpl.1
+    - {{ environ["PREFIX"] }}/lib/perl5/core_perl/pod/perlartistic.pod
+    - {{ environ["PREFIX"] }}/lib/perl5/core_perl/pod/perlgpl.pod
   doc_url: "https://metacpan.org/pod/Compress::Raw::Zlib"
 
 extra:
